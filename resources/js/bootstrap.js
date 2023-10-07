@@ -11,6 +11,7 @@ import axios from "axios";
 window.axios = axios;
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
+window.axios.defaults.withCredentials = true;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -22,8 +23,8 @@ import Echo from "laravel-echo";
 import io from "socket.io-client";
 window.io = io;
 window.Echo = new Echo({
-    broadcaster: "socket.io",
-    host: window.location.hostname + ":6001",
+  broadcaster: "socket.io",
+  host: window.location.hostname + ":6001",
 });
 
 // import Pusher from 'pusher-js';
