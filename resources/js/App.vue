@@ -1,3 +1,5 @@
 <template>
-    <h1>Sample</h1>
+  <v-app>
+    <v-btn color="primary">aaa</v-btn>
+  </v-app>
 </template>
