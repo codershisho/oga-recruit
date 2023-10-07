@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\MessageReceived;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    event(new MessageReceived());
     return view('welcome');
 });
