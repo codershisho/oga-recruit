@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  nignx:
+    image: codershisho/nginx:1.25.0
+    container_name: nginx-${PROJECT_NAME}
+    tty: true
+    ports:
+      - ${NGINX_PORT}:80
+    volumes:
+      - .:${PUBLIC_FOLDER}
+      - ./conf.d:/etc/nginx/conf.d
+    environment:
+      TZ: ${TIME_ZONE}
+    depends_on:
+      - php
+
+  php:
+    image: codershisho/php
+    container_name: php-${PROJECT_NAME}
+    tty: true
+    volumes:
+      - .:${PUBLIC_FOLDER}
+    ports:
+      - ${PHP_PORT}:5173
+    environment:
+      TZ: ${TIME_ZONE}
+
+  db:
+    image: mariadb:10.9
+    container_name: mariadb-${PROJECT_NAME}
+    volumes:
+      - ./db_data:/var/lib/mysql
+    ports:
+      - ${DOCKER_DB_PORT}:3306
+    restart: always
+    environment:
+      TZ: ${TIME_ZONE}
+      MYSQL_ROOT_PASSWORD: ${DOCKER_DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DOCKER_DB_DATABASE}
+
+volumes:
+  db_data:
