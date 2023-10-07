@@ -15,5 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(UserSeeder::class);
+
+        $this->call(MPhaseSeeder::class);
+        $this->call(MPositionSeeder::class);
+        $this->call(MSourceSeeder::class);
+        $this->call(MStatusSeeder::class);
     }
 }
