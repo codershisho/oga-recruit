@@ -34,6 +34,7 @@ class MessageReceived implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('test');
+        $entryId = $this->data[0]['entry_id'];
+        return new Channel('discussion-' . $entryId);
     }
 }

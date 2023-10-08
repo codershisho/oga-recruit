@@ -15,15 +15,12 @@ class StoreService
         try {
             DB::beginTransaction();
 
-            $watchers = TEntryWatcher::where('entry_id', $entryId)->get();
-
-            $watchers->each(function ($watcher) use ($entryId, $request) {
-                TEntryDiscussion::create([
-                    'entry_id' => $entryId,
-                    'user_id' => $watcher['user_id'],
-                    'message' => $request['message'],
-                ]);
-            });
+            $userId = Auth::id();
+            TEntryDiscussion::create([
+                'entry_id' => $entryId,
+                'user_id' => $userId,
+                'message' => $request['message'],
+            ]);
 
             DB::commit();
 

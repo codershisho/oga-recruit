@@ -18,6 +18,9 @@ export const useAuthStore = defineStore("auth", {
     isAuth(state) {
       return state._isAuth;
     },
+    user(state) {
+      return state._user;
+    },
   },
 
   actions: {

@@ -12,4 +12,9 @@ class TEntryWatcher extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+
+    public function userRelation()
+    {
+        return $this->belongsTo(User::class, 'id', 'user_id');
+    }
 }

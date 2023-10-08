@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="tw-w-1/6 mx-3">
-      <EntryWatchers></EntryWatchers>
+      <EntryWatchers :entry-id="route.params.id"></EntryWatchers>
     </div>
   </div>
 </template>
