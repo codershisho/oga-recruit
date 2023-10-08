@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\EntryApi;
 use App\Http\Controllers\Api\MasterApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -28,5 +29,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('/ogarec/v1')->group(function () {
     Route::prefix('/masters')->group(function () {
         Route::get('/', [MasterApi::class, 'index']);
+    });
+
+    Route::prefix('/entries')->group(function () {
+        Route::get('/', [EntryApi::class, 'index']);
     });
 });
