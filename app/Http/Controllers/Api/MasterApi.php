@@ -11,6 +11,7 @@ class MasterApi
     public function index(Request $request)
     {
         $model = MasterFactory::createModel($request->all());
-        logger($model::all());
+        $data = $model->all();
+        return response()->json($data);
     }
 }

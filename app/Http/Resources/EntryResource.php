@@ -12,6 +12,7 @@ class EntryResource extends JsonResource
             "id" => $this->id,
             "first_name" => $this->first_name,
             "last_name" => $this->last_name,
+            "full_name" => $this->first_name . ' ' . $this->last_name,
             "first_name_kana" => $this->first_name_kana,
             "last_name_kana" => $this->last_name_kana,
             "phase_id" => $this->phase_id,

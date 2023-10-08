@@ -8,6 +8,11 @@ import { createPinia } from "pinia";
 import { createPersistedState } from "pinia-plugin-persistedstate";
 import App from "./App.vue";
 
+// components
+import Sheet from "./components/Sheet.vue";
+import Text from "./components/Text.vue";
+import Select from "./components/Select.vue";
+
 const vuetify = createVuetify();
 
 const pinia = createPinia();
@@ -17,4 +22,8 @@ const app = createApp(App);
 app.use(vuetify);
 app.use(router);
 app.use(pinia);
+
+app.component("w-sheet", Sheet);
+app.component("w-text", Text);
+app.component("w-select", Select);
 app.mount("#app");
