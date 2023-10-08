@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\MasterApi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,11 @@ Route::post('/logout', LogoutController::class)->name('logout');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::prefix('/ogarec/v1')->group(function () {
+    Route::prefix('/masters')->group(function () {
+        Route::get('/', [MasterApi::class, 'index']);
+    });
 });
