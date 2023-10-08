@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\DiscussionApi;
 use App\Http\Controllers\Api\EntryApi;
 use App\Http\Controllers\Api\MasterApi;
 use Illuminate\Http\Request;
@@ -33,6 +34,11 @@ Route::prefix('/ogarec/v1')->group(function () {
 
     Route::prefix('/entries')->group(function () {
         Route::get('/', [EntryApi::class, 'index']);
-        Route::get('/{id}', [EntryApi::class, 'show']);
+
+        Route::prefix('/{id}')->group(function () {
+            Route::get('/', [EntryApi::class, 'show']);
+            Route::get('/discussion', [DiscussionApi::class, 'search']);
+            Route::post('/discussion', [DiscussionApi::class, 'store']);
+        });
     });
 });

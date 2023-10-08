@@ -16,12 +16,12 @@
     @vite('resources/js/app.ts')
     {{-- <script src="http://{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script> --}}
 </body>
-<script>
-    window.addEventListener('load', (event) => {
-        Echo.channel('test').listen('MessageReceived', (e) => {
-            console.log(e)
-        })
+{{-- <script>
+    window.addEventListener("load", (event) => {
+        Echo.channel("test").listen("MessageReceived", (e) => {
+            console.log(e);
+        });
     });
-</script>
+</script> --}}
 
 </html>

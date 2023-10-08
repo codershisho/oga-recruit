@@ -1,8 +1,8 @@
 <template>
   <div>Login</div>
 
-  <v-text-field>{{ credentials.email }}</v-text-field>
-  <v-text-field>{{ credentials.password }}</v-text-field>
+  <v-text-field v-model="credentials.email"></v-text-field>
+  <v-text-field v-model="credentials.password"></v-text-field>
   <v-btn @click="login">login</v-btn>
 </template>
 

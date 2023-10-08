@@ -15,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/{any}', function () {
-    event(new MessageReceived());
     return view('welcome');
 })->where('any', '.*');
