@@ -1,6 +1,7 @@
 <?php
 
 use App\Events\MessageReceived;
+use App\Http\Controllers\PdfController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any}', function () {
+Route::get('/ogarec{any}', function () {
     return view('welcome');
 })->where('any', '.*');
+
+Route::get('/uploads/pdf/resume/{id}', [PdfController::class, 'showResume'])->name('pdf.show.resume');
+Route::get('/uploads/pdf/cv/{id}', [PdfController::class, 'showCv'])->name('pdf.show.cv');

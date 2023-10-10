@@ -6,6 +6,7 @@
         <v-expand-transition>
           <EntryBasicInfo v-show="expand" :entry-id="route.params.id"></EntryBasicInfo>
         </v-expand-transition>
+        <EntryDocs :entry-id="route.params.id"></EntryDocs>
       </div>
       <div class="tw-w-2/3 mx-3">
         <EntryDiscussions :entry-id="route.params.id"></EntryDiscussions>
@@ -23,6 +24,7 @@ import { useRoute } from "vue-router";
 import EntryBasicInfo from "../components/organisms/EntryBasicInfo.vue";
 import EntryWatchers from "../components/organisms/EntryWatchers.vue";
 import EntryDiscussions from "../components/organisms/EntryDiscussions.vue";
+import EntryDocs from "../components/organisms/EntryDocs.vue";
 
 const route = useRoute();
 

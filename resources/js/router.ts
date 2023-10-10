@@ -19,16 +19,6 @@ const routes = [
     meta: {
       isAuthenticated: true,
     },
-    // children: [
-    //   {
-    //     path: "/:id",
-    //     name: "Entry",
-    //     component: Entry,
-    //     meta: {
-    //       isAuthenticated: true,
-    //     },
-    //   },
-    // ],
   },
   {
     path: "/entries/:id",
@@ -49,7 +39,7 @@ const routes = [
 ];
 const router = createRouter({
   routes,
-  history: createWebHistory(),
+  history: createWebHistory("/ogarec/"),
 });
 
 // login状態のチェック

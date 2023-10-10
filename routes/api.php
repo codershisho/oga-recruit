@@ -41,6 +41,7 @@ Route::prefix('/ogarec/v1')->group(function () {
             Route::post('/discussion', [DiscussionApi::class, 'store']);
             Route::get('/watchers', [EntryApi::class, 'wathcers']);
             Route::put('/watchers/{userId}', [EntryApi::class, 'wathcersUpd']);
+            Route::post('/upload', [EntryApi::class, 'upload']);
         });
     });
 });

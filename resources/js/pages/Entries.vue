@@ -1,6 +1,11 @@
 <template>
   <b-sheet>
-    <v-data-table :headers="headers" :items="items" item-value="name" @click:row="onClickRow"></v-data-table>
+    <v-data-table
+      :headers="headers"
+      :items="items"
+      item-value="name"
+      @click:row="onClickRow"
+    ></v-data-table>
   </b-sheet>
 </template>
 
@@ -22,7 +27,7 @@ const headers = ref([
 const items = ref([]);
 
 onMounted(async () => {
-  const res = await axios.get("api/ogarec/v1/entries");
+  const res = await axios.get("/api/ogarec/v1/entries");
   items.value = res.data;
 });
 
