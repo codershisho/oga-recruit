@@ -16,6 +16,15 @@
         .v-application {
             font-family: 'Noto Sans JP', sans-serif !important;
         }
+
+        input,
+        .v-overlay-container .v-list-item-title,
+        .v-autocomplete__selection-text {
+            font-family: 'Noto Sans JP', sans-serif !important;
+            font-size: 0.875rem !important;
+            line-height: 1.25rem !important;
+            font-weight: 600 !important;
+        }
     </style>
 </head>
 

@@ -1,10 +1,11 @@
 <template>
   <div class="d-flex align-center py-2">
-    <div v-if="label" class="tw-w-1/4">
+    <div v-if="label" class="tw-w-1/4 tw-text-sm tw-font-semibold">
       {{ label }}
     </div>
     <div :class="label ? `tw-w-3/4` : `tw-w-full`">
       <v-text-field
+        class="tw-text-sm tw-font-semibold"
         v-bind="$attrs"
         v-model="value"
         variant="solo-filled"

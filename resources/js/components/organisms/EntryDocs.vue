@@ -21,7 +21,7 @@
         ></v-btn>
       </div>
       <div class="tw-w-2/12">
-        <v-btn class="tw-w-full" size="small" variant="outlined" color="primary" @click="onUpload">
+        <v-btn class="tw-w-full" variant="outlined" color="primary" @click="onUpload">
           Upload
         </v-btn>
       </div>
@@ -41,7 +41,7 @@
         ></v-btn>
       </div>
       <div class="tw-w-2/12">
-        <v-btn class="tw-w-full" size="small" variant="outlined" color="primary" @click="onUpload">
+        <v-btn class="tw-w-full" variant="outlined" color="primary" @click="onUpload">
           Upload
         </v-btn>
       </div>
@@ -60,9 +60,7 @@
         ></v-btn>
       </div>
       <div class="tw-w-2/12">
-        <v-btn class="tw-w-full" size="small" variant="outlined" color="primary" @click="onUpload">
-          Save
-        </v-btn>
+        <v-btn class="tw-w-full" variant="outlined" color="primary" @click="onUpload"> Save </v-btn>
       </div>
     </div>
   </w-sheet>

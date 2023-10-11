@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex align-center py-2">
-    <div class="tw-w-1/4">
+    <div class="tw-w-1/4 tw-text-sm tw-font-semibold">
       {{ label }}
     </div>
     <div class="tw-w-3/4">

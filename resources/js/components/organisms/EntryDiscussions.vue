@@ -7,11 +7,11 @@
         :style="discussion.user_id == authStore.user.id ? `text-align:end` : ``"
       >
         <div>
-          <span class="tw-text-lg tw-font-bold pr-2">{{ discussion.user_name }}</span>
+          <span class="tw-text-sm tw-font-bold pr-2">{{ discussion.user_name }}</span>
           <span class="tw-text-xs">{{ discussion.created_at }}</span>
         </div>
         <v-chip class="my-1" label color="secondary">
-          {{ discussion.message }}
+          <span class="tw-text-sm tw-font-semibold">{{ discussion.message }}</span>
         </v-chip>
       </div>
     </div>
@@ -27,7 +27,9 @@
         hide-details
         v-model="postMessage"
       ></v-textarea>
-      <v-btn class="mt-3" color="primary" @click="onSend">send</v-btn>
+      <v-btn class="mt-3" color="primary" prepend-icon="mdi-send-outline" @click="onSend">
+        送信
+      </v-btn>
     </div>
   </w-sheet>
 </template>

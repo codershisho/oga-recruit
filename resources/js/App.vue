@@ -1,6 +1,6 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-if="authStore._isAuth" v-model="drawer">
+    <!-- <v-navigation-drawer v-if="authStore._isAuth" v-model="drawer">
       <v-sheet color="grey-lighten-4" class="pa-4">
         <v-avatar class="mb-4" color="grey-darken-1" size="64"></v-avatar>
 
@@ -19,12 +19,10 @@
           color="primary"
         ></v-list-item>
       </v-list>
-    </v-navigation-drawer>
+    </v-navigation-drawer> -->
 
     <v-app-bar v-if="authStore._isAuth">
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-app-bar-title>Application</v-app-bar-title>
+      <v-app-bar-title>OGA REC</v-app-bar-title>
     </v-app-bar>
 
     <v-main class="tw-bg-gray-200">
@@ -41,7 +39,6 @@ import { useAuthStore } from "./stores/auth";
 
 const authStore = useAuthStore();
 
-const drawer = ref(null);
 const links = [
   ["mdi-inbox-arrow-down", "エントリー一覧", "/entries"],
   ["mdi-send", "Send", ""],
