@@ -1,5 +1,5 @@
 <template>
-  <w-sheet>
+  <w-sheet height="250">
     <div>basic</div>
     <w-text label="氏名" v-model="entry.full_name" readonly></w-text>
     <w-select
@@ -18,7 +18,7 @@
       v-model="entry.status_id"
       color="primary"
     ></w-select>
-    <w-text label="メールアドレス" v-model="entry.mail" readonly></w-text>
+    <!-- <w-text label="メールアドレス" v-model="entry.mail" readonly></w-text>
     <w-text label="電話番号" v-model="entry.phone" readonly></w-text>
     <w-text label="生年月日" v-model="entry.birth_day" readonly></w-text>
     <w-text label="郵便番号" v-model="entry.post_code" readonly></w-text>
@@ -26,19 +26,20 @@
     <w-text label="希望部署" v-model="entry.positions" readonly></w-text>
     <w-text label="入社希望日" v-model="entry.join_day" readonly></w-text>
     <w-text label="フリーメッセージ" v-model="entry.free_message" readonly></w-text>
-    <w-text label="登録日" v-model="entry.created_at" readonly></w-text>
+    <w-text label="登録日" v-model="entry.created_at" readonly></w-text> -->
   </w-sheet>
 </template>
 
 <script setup lang="ts">
 import axios from "axios";
 import { ref, onMounted } from "vue";
+import { Entry } from "../../types/entry";
 
 const props = defineProps<{
   entryId?: Number;
 }>();
 
-const entry = ref({});
+const entry = ref<Entry>({});
 const phases = ref([]);
 const statuses = ref([]);
 

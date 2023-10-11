@@ -1,16 +1,20 @@
 <template>
-  <div>
-    {{ label }}
+  <div class="d-flex align-center py-2">
+    <div class="tw-w-1/4">
+      {{ label }}
+    </div>
+    <div class="tw-w-3/4">
+      <v-autocomplete
+        v-bind="$attrs"
+        v-model="value"
+        variant="solo-filled"
+        flat
+        density="compact"
+        hide-details
+        clearable
+      />
+    </div>
   </div>
-  <v-autocomplete
-    v-bind="$attrs"
-    v-model="value"
-    variant="solo-filled"
-    flat
-    density="compact"
-    hide-details
-    clearable
-  />
 </template>
 <script setup lang="ts">
 import { computed } from "vue";

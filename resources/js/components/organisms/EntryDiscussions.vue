@@ -1,21 +1,34 @@
 <template>
   <w-sheet>
-    <div>discussions</div>
-    <div
-      v-for="(discussion, i) in discussions"
-      :key="i"
-      :style="discussion.user_id == authStore.user.id ? `text-align:end` : ``"
-    >
-      <div>
-        <span class="tw-text-lg tw-font-bold pr-2">{{ discussion.user_name }}</span>
-        <span class="tw-text-xs">{{ discussion.created_at }}</span>
+    <div class="overflow-y-auto px-3" style="max-height: 650px !important">
+      <div
+        v-for="(discussion, i) in discussions"
+        :key="i"
+        :style="discussion.user_id == authStore.user.id ? `text-align:end` : ``"
+      >
+        <div>
+          <span class="tw-text-lg tw-font-bold pr-2">{{ discussion.user_name }}</span>
+          <span class="tw-text-xs">{{ discussion.created_at }}</span>
+        </div>
+        <v-chip class="my-1" label color="secondary">
+          {{ discussion.message }}
+        </v-chip>
       </div>
-      <v-chip class="my-1" label color="secondary">
-        {{ discussion.message }}
-      </v-chip>
     </div>
-    <w-text placeholder="message" v-model="postMessage"></w-text>
-    <v-btn color="primary" @click="onSend">send</v-btn>
+    <div class="d-flex align-center">
+      <v-textarea
+        class="pt-3 pr-3"
+        placeholder="message"
+        auto-grow
+        density="compact"
+        rows="1"
+        variant="solo-filled"
+        flat
+        hide-details
+        v-model="postMessage"
+      ></v-textarea>
+      <v-btn class="mt-3" color="primary" @click="onSend">send</v-btn>
+    </div>
   </w-sheet>
 </template>
 <script setup lang="ts">

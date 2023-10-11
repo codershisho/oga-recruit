@@ -1,20 +1,24 @@
 <template>
-  <div class="">
-    {{ label }}
+  <div class="d-flex align-center py-2">
+    <div v-if="label" class="tw-w-1/4">
+      {{ label }}
+    </div>
+    <div :class="label ? `tw-w-3/4` : `tw-w-full`">
+      <v-text-field
+        v-bind="$attrs"
+        v-model="value"
+        variant="solo-filled"
+        flat
+        density="compact"
+        hide-details
+        single-line
+      >
+        <template v-if="preicon" v-slot:prepend-inner>
+          <v-icon :icon="preicon" :size="15" />
+        </template>
+      </v-text-field>
+    </div>
   </div>
-  <v-text-field
-    v-bind="$attrs"
-    v-model="value"
-    variant="solo-filled"
-    flat
-    density="compact"
-    hide-details
-    single-line
-  >
-    <template v-if="preicon" v-slot:prepend-inner>
-      <v-icon :icon="preicon" :size="15" />
-    </template>
-  </v-text-field>
 </template>
 <script setup lang="ts">
 import { computed } from "vue";

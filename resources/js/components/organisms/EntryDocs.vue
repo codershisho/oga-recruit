@@ -1,16 +1,17 @@
 <template>
   <w-sheet>
     <div>docs</div>
-    <v-btn color="primary" @click="onUpload"> アップロード </v-btn>
-    <div>
-      <div>履歴書</div>
-      <div>
+    <div class="d-flex align-center">
+      <div class="tw-w-2/12">履歴書</div>
+      <div class="tw-w-7/12">
         <v-file-input
           label="upload"
           density="compact"
           hide-details
           v-model="resumeFile"
         ></v-file-input>
+      </div>
+      <div class="tw-w-1/12">
         <v-btn
           class="ml-2"
           icon="mdi-arrow-top-right-bold-box-outline"
@@ -19,11 +20,18 @@
           @click="onJumpResume"
         ></v-btn>
       </div>
+      <div class="tw-w-2/12">
+        <v-btn class="tw-w-full" size="small" variant="outlined" color="primary" @click="onUpload">
+          Upload
+        </v-btn>
+      </div>
     </div>
-    <div>
-      <div>職務経歴書</div>
-      <div>
+    <div class="d-flex align-center py-2">
+      <div class="tw-w-2/12">職務経歴書</div>
+      <div class="tw-w-7/12">
         <v-file-input label="upload" density="compact" hide-details v-model="cvFile"></v-file-input>
+      </div>
+      <div class="tw-w-1/12">
         <v-btn
           class="ml-2"
           icon="mdi-arrow-top-right-bold-box-outline"
@@ -32,16 +40,29 @@
           @click="onJumpCv"
         ></v-btn>
       </div>
+      <div class="tw-w-2/12">
+        <v-btn class="tw-w-full" size="small" variant="outlined" color="primary" @click="onUpload">
+          Upload
+        </v-btn>
+      </div>
     </div>
-    <div>
-      <div>
-        <w-text label="適性結果のリンク" placeholder="リンクURL" v-model="analysisLink"></w-text>
+    <div class="d-flex align-center">
+      <div class="tw-w-2/12 tw-text-base">適性結果</div>
+      <div class="tw-w-7/12">
+        <w-text placeholder="リンクURL" v-model="analysisLink"></w-text>
+      </div>
+      <div class="tw-w-1/12">
         <v-btn
           class="ml-2"
           icon="mdi-arrow-top-right-bold-box-outline"
           size="x-small"
           color="primary"
         ></v-btn>
+      </div>
+      <div class="tw-w-2/12">
+        <v-btn class="tw-w-full" size="small" variant="outlined" color="primary" @click="onUpload">
+          Save
+        </v-btn>
       </div>
     </div>
   </w-sheet>

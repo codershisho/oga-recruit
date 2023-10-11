@@ -28,7 +28,7 @@
     </v-app-bar>
 
     <v-main class="tw-bg-gray-200">
-      <div class="!tw-px-24 !tw-pt-12">
+      <div class="!tw-px-8 !tw-pt-6">
         <router-view></router-view>
       </div>
     </v-main>
