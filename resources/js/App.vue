@@ -1,28 +1,10 @@
 <template>
   <v-app id="inspire">
-    <!-- <v-navigation-drawer v-if="authStore._isAuth" v-model="drawer">
-      <v-sheet color="grey-lighten-4" class="pa-4">
-        <v-avatar class="mb-4" color="grey-darken-1" size="64"></v-avatar>
-
-        <div>john@google.com</div>
-      </v-sheet>
-
-      <v-divider></v-divider>
-
-      <v-list>
-        <v-list-item
-          v-for="[icon, text, url] in links"
-          :key="icon"
-          :prepend-icon="icon"
-          :title="text"
-          :to="url"
-          color="primary"
-        ></v-list-item>
-      </v-list>
-    </v-navigation-drawer> -->
-
     <v-app-bar v-if="authStore._isAuth">
       <v-app-bar-title>OGA REC</v-app-bar-title>
+      <template v-for="[icon, text, url] in links">
+        <v-btn flat variant="text" :prepend-icon="icon" :text="text" :to="url"> </v-btn>
+      </template>
     </v-app-bar>
 
     <v-main class="tw-bg-gray-200">

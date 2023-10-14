@@ -1,19 +1,31 @@
 <template>
-  <b-sheet>
-    <v-data-table
-      :headers="headers"
-      :items="items"
-      item-value="name"
-      @click:row="onClickRow"
-    ></v-data-table>
-  </b-sheet>
+  <v-btn class="mt-3" color="primary" prepend-icon="mdi-content-save-edit-outline" @click="onNew">
+    新規
+  </v-btn>
+  <w-sheet class="d-flex">
+    <EntryBasicInfo
+      v-if="newFlag"
+      class="w-50 mr-3"
+      :upd-mode="false"
+      @onClose="newFlag = false"
+    ></EntryBasicInfo>
+    <w-sheet :class="newFlag ? `w-50` : `w-100`">
+      <v-data-table
+        :headers="headers"
+        :items="items"
+        item-value="name"
+        @click:row="onClickRow"
+      ></v-data-table>
+    </w-sheet>
+  </w-sheet>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import BSheet from "../components/Sheet.vue";
 import { VDataTable } from "vuetify/labs/VDataTable";
 import { useRouter } from "vue-router";
+import axios from "axios";
+import EntryBasicInfo from "../components/organisms/EntryBasicInfo.vue";
 
 const router = useRouter();
 const headers = ref([
@@ -25,6 +37,7 @@ const headers = ref([
 ]);
 
 const items = ref([]);
+const newFlag = ref(false);
 
 onMounted(async () => {
   const res = await axios.get("/api/ogarec/v1/entries");
@@ -33,7 +46,10 @@ onMounted(async () => {
 
 function onClickRow(event: any, rowVal: any) {
   const entryId = rowVal.item.id;
-  console.log(entryId);
   router.push("/entries/" + entryId);
+}
+
+function onNew() {
+  newFlag.value = true;
 }
 </script>

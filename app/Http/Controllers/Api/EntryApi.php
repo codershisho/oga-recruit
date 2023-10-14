@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\TEntryDoc;
 use App\Services\Entry\IndexService;
 use App\Services\Entry\ShowService;
+use App\Services\Entry\StoreService;
+use App\Services\Entry\UpdateService;
 use App\Services\Entry\WatchersService;
-use Illuminate\Cache\Repository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,10 +20,22 @@ class EntryApi extends Controller
         return response()->json($data);
     }
 
-    public function show($id, ShowService $service)
+    public function show(int $id, ShowService $service)
     {
         $data = $service->execShow($id);
         return response()->json($data);
+    }
+
+    public function store(Request $request, StoreService $service)
+    {
+        $service->execStore($request->all());
+        return response()->json();
+    }
+
+    public function update(int $id, Request $request, UpdateService $service)
+    {
+        $service->execUpdate($id, $request->all());
+        return response()->json();
     }
 
     /**

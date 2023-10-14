@@ -34,6 +34,8 @@ Route::prefix('/ogarec/v1')->group(function () {
 
     Route::prefix('/entries')->group(function () {
         Route::get('/', [EntryApi::class, 'index']);
+        Route::post('/', [EntryApi::class, 'store']);
+        Route::put('/{id}', [EntryApi::class, 'update']);
 
         Route::prefix('/{id}')->group(function () {
             Route::get('/', [EntryApi::class, 'show']);

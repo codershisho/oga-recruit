@@ -13,6 +13,10 @@ class TEntry extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'created_at'        => 'datetime:Y-m-d H:i:s',    // ←日付の形式を指定
+        'updated_at'        => 'datetime:Y-m-d H:i:s',    // ←日付の形式を指定
+    ];
 
     public function phaseRelation()
     {

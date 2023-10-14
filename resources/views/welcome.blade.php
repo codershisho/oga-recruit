@@ -19,7 +19,8 @@
 
         input,
         .v-overlay-container .v-list-item-title,
-        .v-autocomplete__selection-text {
+        .v-autocomplete__selection-text,
+        .v-field__field textarea {
             font-family: 'Noto Sans JP', sans-serif !important;
             font-size: 0.875rem !important;
             line-height: 1.25rem !important;

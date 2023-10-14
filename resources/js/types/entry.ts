@@ -24,4 +24,6 @@ export type Entry = {
   created_at?: String;
   updated_at?: String;
   deleted_at?: String;
+  next_action_day?: String;
+  message?: String;
 };

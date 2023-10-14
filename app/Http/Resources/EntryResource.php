@@ -31,9 +31,8 @@ class EntryResource extends JsonResource
             "source_name" => $this->sourceRelation->name,
             "free_message" => $this->free_message,
             "image" => $this->image,
-            "created_at" => $this->created_at,
-            "updated_at" => $this->updated_at,
-            "deleted_at" => $this->deleted_at,
+            "created_at" => $this->created_at->format('Y-m-d H:i:s'),
+            "updated_at" => $this->updated_at->format('Y-m-d H:i:s'),
         ];
     }
 }
