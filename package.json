@@ -24,6 +24,7 @@
         "laravel-echo-server": "^1.6.3",
         "pinia": "^2.1.6",
         "pinia-plugin-persistedstate": "^3.2.0",
+        "push.js": "^1.0.12",
         "socket.io": "^2.3.0",
         "socket.io-client": "^2.3.0",
         "vite-plugin-vuetify": "^1.0.2",

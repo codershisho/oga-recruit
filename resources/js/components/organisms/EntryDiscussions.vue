@@ -38,6 +38,7 @@
 // TODO 検索
 import { useAuthStore } from "@/stores/auth";
 import { ref } from "vue";
+import Push from "push.js";
 
 const props = defineProps<{
   entryId?: Number;
@@ -51,7 +52,10 @@ search();
 
 Echo.channel("discussion-" + props.entryId).listen("MessageReceived", (e) => {
   console.log(e.data);
-  discussions.value = e.data;
+  discussions.value.push(e.data);
+  Push.create("チャット更新通知", {
+    body: e.data.user_name + "さんがチャットしました。\n" + e.data.message,
+  });
 });
 
 async function search() {

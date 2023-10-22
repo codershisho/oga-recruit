@@ -16,18 +16,23 @@ class StoreService
             DB::beginTransaction();
 
             $userId = Auth::id();
-            TEntryDiscussion::create([
+            $userName = Auth::user()->name;
+
+            $m = TEntryDiscussion::create([
                 'entry_id' => $entryId,
                 'user_id' => $userId,
                 'message' => $request['message'],
-            ]);
+            ])->toArray();
+
 
             DB::commit();
 
-            $service = new SearchService();
-            $data = $service->execSearch($entryId);
+            $m['user_name'] = $userName;
+            // $m->put("user_name", $userName);
+            // $service = new SearchService();
+            // $data = $service->execSearch($entryId);
 
-            event(new MessageReceived($data));
+            event(new MessageReceived($m));
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
