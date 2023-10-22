@@ -1,18 +1,18 @@
 <template>
   <w-sheet>
     <div class="overflow-y-auto px-3" style="max-height: 650px !important">
-      <div
-        v-for="(discussion, i) in discussions"
-        :key="i"
-        :style="discussion.user_id == authStore.user.id ? `text-align:end` : ``"
-      >
-        <div>
-          <span class="tw-text-sm tw-font-bold pr-2">{{ discussion.user_name }}</span>
-          <span class="tw-text-xs">{{ discussion.created_at }}</span>
-        </div>
-        <v-chip class="my-1" label color="secondary">
-          <span class="tw-text-sm tw-font-semibold">{{ discussion.message }}</span>
-        </v-chip>
+      <div class="chat-main">
+        <template v-for="(discussion, i) in discussions" :key="i">
+          <div :class="discussion.user_id != authStore.user.id ? `chat-left` : `chat-right`">
+            <div class="">
+              <div class="tw-text-sm tw-font-bold pr-2">{{ discussion.user_name }}</div>
+              <!-- <div class="tw-text-xs">{{ discussion.created_at }}</div> -->
+              <div class="chat-post-area">
+                {{ discussion.message }}
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
     </div>
     <div class="d-flex align-center">
@@ -66,3 +66,23 @@ async function onSend() {
   postMessage.value = "";
 }
 </script>
+
+<style>
+.chat-left,
+.chat-right {
+  margin: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.chat-right {
+  justify-content: flex-end;
+}
+.chat-post-area {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #f2f6fa;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+</style>

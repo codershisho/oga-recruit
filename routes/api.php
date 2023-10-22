@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::prefix('/ogarec/v1')->group(function () {
+Route::middleware('auth:sanctum')->prefix('/ogarec/v1')->group(function () {
     Route::prefix('/masters')->group(function () {
         Route::get('/', [MasterApi::class, 'index']);
     });

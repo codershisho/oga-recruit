@@ -1,8 +1,13 @@
 <template>
-  <v-btn class="mt-3" color="primary" prepend-icon="mdi-content-save-edit-outline" @click="onNew">
-    新規
-  </v-btn>
-  <w-sheet class="d-flex">
+  <v-btn
+    class="mb-3"
+    color="primary"
+    variant="outlined"
+    text="新規エントリー"
+    prepend-icon="mdi-content-save-edit-outline"
+    @click="onNew"
+  ></v-btn>
+  <div :class="newFlag ? `d-flex` : ``">
     <EntryBasicInfo
       v-if="newFlag"
       class="w-50 mr-3"
@@ -14,10 +19,11 @@
         :headers="headers"
         :items="items"
         item-value="name"
+        density="compact"
         @click:row="onClickRow"
       ></v-data-table>
     </w-sheet>
-  </w-sheet>
+  </div>
 </template>
 
 <script setup lang="ts">

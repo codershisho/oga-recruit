@@ -3,8 +3,7 @@ import { useAuthStore } from "./stores/auth";
 import Login from "./pages/Login.vue";
 import Entries from "./pages/Entries.vue";
 import Entry from "./pages/Entry.vue";
-import TopPage from "./pages/TopPage.vue";
-import NextPage from "./pages/NextPage.vue";
+import Dashboard from "./pages/Dashboard.vue";
 
 const routes = [
   {
@@ -30,8 +29,8 @@ const routes = [
   },
   {
     path: "/",
-    name: "NextPage",
-    component: NextPage,
+    name: "Dashboard",
+    component: Dashboard,
     meta: {
       isAuthenticated: true,
     },

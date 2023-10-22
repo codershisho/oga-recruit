@@ -7,6 +7,8 @@ import router from "./router";
 import { createPinia } from "pinia";
 import { createPersistedState } from "pinia-plugin-persistedstate";
 import App from "./App.vue";
+// plugins
+import axios from "./plugins/axios";
 
 // components
 import Sheet from "./components/Sheet.vue";
@@ -23,6 +25,11 @@ const app = createApp(App);
 app.use(vuetify);
 app.use(router);
 app.use(pinia);
+
+app.use(axios, {
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  pinia,
+});
 
 app.component("w-sheet", Sheet);
 app.component("w-text", Text);

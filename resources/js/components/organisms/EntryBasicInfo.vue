@@ -46,23 +46,26 @@
     <w-text label="入社希望日" v-model="entry.join_day"></w-text>
     <w-text-area label="フリーメッセージ" rows="3" v-model="entry.free_message"></w-text-area>
     <w-text label="登録日" v-model="entry.created_at"></w-text>
-    <v-btn
-      class="mt-3"
-      color="primary"
-      prepend-icon="mdi-content-save-edit-outline"
-      @click="onSave"
-    >
-      保存
-    </v-btn>
-    <v-btn
-      v-if="!updMode"
-      class="mt-3"
-      color="primary"
-      prepend-icon="mdi-content-save-edit-outline"
-      @click="onClose"
-    >
-      閉じる
-    </v-btn>
+    <div class="d-flex justify-space-between">
+      <v-btn
+        v-if="!updMode"
+        class="mt-3 mr-3 tw-w-40"
+        color="blue-grey-darken-3"
+        variant="outlined"
+        text="閉じる"
+        prepend-icon="mdi-close-box-outline"
+        @click="onClose"
+      >
+      </v-btn>
+      <v-btn
+        class="mt-3 tw-w-40"
+        color="primary"
+        text="保存"
+        prepend-icon="mdi-content-save-edit-outline"
+        @click="onSave"
+      >
+      </v-btn>
+    </div>
   </w-sheet>
 </template>
 
