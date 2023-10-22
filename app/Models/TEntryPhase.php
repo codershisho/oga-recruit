@@ -12,4 +12,9 @@ class TEntryPhase extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+
+    public function phaseRelation()
+    {
+        return $this->hasOne(MPhase::class, 'id', 'phase_id');
+    }
 }

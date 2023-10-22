@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\TEntryDoc;
 use App\Services\Entry\IndexService;
+use App\Services\Entry\JudgeService;
 use App\Services\Entry\ShowService;
 use App\Services\Entry\StoreService;
 use App\Services\Entry\UpdateService;
@@ -97,6 +98,33 @@ class EntryApi extends Controller
             throw $th;
         }
 
+        return response()->json();
+    }
+
+    /**
+     * エントリーIDに紐づく評価情報を返す
+     *
+     * @param int $id
+     * @param JudgeService $service
+     * @return void
+     */
+    public function judges(int $id, JudgeService $service)
+    {
+        $data = $service->execSearch($id);
+        return response()->json($data);
+    }
+
+    /**
+     * エントリーフェーズIDに紐づく情報を更新
+     *
+     * @param int $entryPhasesId
+     * @param Request $request
+     * @param JudgeService $service
+     * @return void
+     */
+    public function updateJudge(int $entryPhasesId, Request $request, JudgeService $service)
+    {
+        $service->execUpdate($entryPhasesId, $request->all());
         return response()->json();
     }
 }

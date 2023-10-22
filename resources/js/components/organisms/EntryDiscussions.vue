@@ -36,6 +36,7 @@
 <script setup lang="ts">
 // TODO chatデザイン
 // TODO 検索
+// TODO タブ切り替えで検索処理
 import { useAuthStore } from "@/stores/auth";
 import { ref, nextTick, onMounted } from "vue";
 import Push from "push.js";

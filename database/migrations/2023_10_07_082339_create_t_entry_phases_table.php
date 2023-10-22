@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id()->comment('エントリーフェーズID');
             $table->unsignedBigInteger('entry_id')->comment('エントリーID');
             $table->unsignedBigInteger('phase_id')->comment('フェーズID');
+            $table->unsignedBigInteger('status_id')->comment('ステータスID');
             $table->date('next_action_day')->nullable()->comment('次フェーズの実施日');
             $table->text('message')->nullable()->comment('メッセージ（メモ的な）');
             $table->timestamps();

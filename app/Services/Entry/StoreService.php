@@ -14,9 +14,11 @@ class StoreService
             DB::beginTransaction();
 
             $m = TEntry::create($request);
+
             TEntryPhase::create([
                 "entry_id" => $m->id,
                 "phase_id" => $request['phase_id'],
+                "status_id" => $request['status_id'],
             ]);
 
             DB::commit();

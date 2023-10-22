@@ -36,7 +36,6 @@ export const useAuthStore = defineStore("auth", {
       }
     },
     async logout() {
-      // TODO authのプラグインを作って認証切れの場合の対応
       const res = await axios.post("/api/logout");
       if (res.status == 200) {
         this._isAuth = false;

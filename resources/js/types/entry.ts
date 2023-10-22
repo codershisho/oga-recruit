@@ -27,3 +27,13 @@ export type Entry = {
   next_action_day?: String;
   message?: String;
 };
+
+export type Judge = {
+  id: Number;
+  entry_id: Number;
+  phase_id: Number;
+  phase_name: String;
+  status_id: Number;
+  next_action_day: String;
+  message: String;
+};
