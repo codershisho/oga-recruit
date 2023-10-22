@@ -1,13 +1,13 @@
 <template>
   <w-sheet>
-    <div class="overflow-y-auto px-3" style="max-height: 650px !important">
+    <div ref="messageArea" class="overflow-y-auto px-3" style="max-height: 650px !important">
       <div class="chat-main">
         <template v-for="(discussion, i) in discussions" :key="i">
           <div :class="discussion.user_id != authStore.user.id ? `chat-left` : `chat-right`">
-            <div class="">
+            <div>
               <div class="tw-text-sm tw-font-bold pr-2">{{ discussion.user_name }}</div>
               <!-- <div class="tw-text-xs">{{ discussion.created_at }}</div> -->
-              <div class="chat-post-area">
+              <div class="chat-post-area tw-text-sm">
                 {{ discussion.message }}
               </div>
             </div>
@@ -37,7 +37,7 @@
 // TODO chatデザイン
 // TODO 検索
 import { useAuthStore } from "@/stores/auth";
-import { ref } from "vue";
+import { ref, nextTick, onMounted } from "vue";
 import Push from "push.js";
 
 const props = defineProps<{
@@ -47,15 +47,21 @@ const props = defineProps<{
 const authStore = useAuthStore();
 const discussions = ref([]);
 const postMessage = ref("");
+const messageArea = ref<HTMLElement>();
 
-search();
+onMounted(async () => {
+  await search();
+  messageArea.value.scrollTop = messageArea.value.scrollHeight;
+});
 
-Echo.channel("discussion-" + props.entryId).listen("MessageReceived", (e) => {
+Echo.channel("discussion-" + props.entryId).listen("MessageReceived", async (e) => {
   console.log(e.data);
   discussions.value.push(e.data);
   Push.create("チャット更新通知", {
     body: e.data.user_name + "さんがチャットしました。\n" + e.data.message,
   });
+  await nextTick();
+  messageArea.value.scrollTop = messageArea.value.scrollHeight;
 });
 
 async function search() {
@@ -74,7 +80,7 @@ async function onSend() {
 <style>
 .chat-left,
 .chat-right {
-  margin: 10px 0;
+  margin: 12px 0;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;

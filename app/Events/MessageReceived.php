@@ -34,6 +34,7 @@ class MessageReceived implements ShouldBroadcast
      */
     public function broadcastOn()
     {
+        // TODO watcherになっているもののみ
         $entryId = $this->data['entry_id'];
         return new Channel('discussion-' . $entryId);
     }
