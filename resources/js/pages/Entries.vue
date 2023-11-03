@@ -43,7 +43,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, i) in items" :key="i" @click="onClickRow(item)">
+          <tr
+            v-for="(item, i) in items"
+            :key="i"
+            @click="onClickRow(item)"
+            class="tw-cursor-pointer"
+          >
             <td class="!tw-text-sm">{{ item.id }}</td>
             <td class="!tw-text-sm">{{ item.full_name }}</td>
             <td class="!tw-text-sm">{{ item.phase_name }}</td>
