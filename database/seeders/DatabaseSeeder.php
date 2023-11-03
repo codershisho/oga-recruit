@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MPositionSeeder::class);
         $this->call(MSourceSeeder::class);
         $this->call(MStatusSeeder::class);
+        $this->call(MReasonSeeder::class);
     }
 }
