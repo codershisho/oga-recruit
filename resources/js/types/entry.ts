@@ -56,3 +56,11 @@ export type Reason = {
   updated_at?: String;
   deleted_at?: String;
 };
+
+export type Uploaded = {
+  id: Number;
+  entry_id: Number;
+  resume_path?: String;
+  cv_path?: String;
+  analysis_link?: String;
+};

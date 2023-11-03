@@ -9,6 +9,7 @@ use App\Services\Entry\JudgeService;
 use App\Services\Entry\ShowService;
 use App\Services\Entry\StoreService;
 use App\Services\Entry\UpdateService;
+use App\Services\Entry\UploadService;
 use App\Services\Entry\WatchersService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,6 +66,18 @@ class EntryApi extends Controller
     }
 
     /**
+     * アップロードされた書類の検索
+     *
+     * @param [type] $id
+     * @return void
+     */
+    public function uploaded($id, UploadService $service)
+    {
+        $data = $service->execSearchDocs($id);
+        return response()->json($data);
+    }
+
+    /**
      * 書類のアップロード
      *
      * @param [type] $id
@@ -77,10 +90,12 @@ class EntryApi extends Controller
         $cvFile = $request->cvFile;
         $path = '/uploads/entry/' . $id;
 
+        $resumeFilePath = null;
         if (!empty($resumeFile)) {
             $resumeFilePath = $resumeFile->storeAs($path, 'resume.pdf', 'public');
         }
 
+        $cvFilePath = null;
         if (!empty($cvFile)) {
             $cvFilePath = $cvFile->storeAs($path, 'cv.pdf', 'public');
         }
@@ -88,9 +103,19 @@ class EntryApi extends Controller
         try {
             DB::beginTransaction();
 
-            TEntryDoc::upsert([
-                ['entry_id' => $id, 'resume_path' => $resumeFilePath, 'cv_path' => $cvFilePath]
-            ], ['entry_id'], ['resume_path', 'cv_path']);
+            // TEntryDoc::upsert([
+            //     ['entry_id' => $id, 'resume_path' => $resumeFilePath, 'cv_path' => $cvFilePath]
+            // ], ['entry_id'], ['resume_path', 'cv_path']);
+
+            TEntryDoc::updateOrCreate(
+                [
+                    'entry_id' => $id
+                ],
+                [
+                    'resume_path' => $resumeFilePath,
+                    'cv_path' => $cvFilePath,
+                ]
+            );
 
             DB::commit();
         } catch (\Throwable $th) {

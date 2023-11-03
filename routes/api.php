@@ -39,11 +39,15 @@ Route::middleware('auth:sanctum')->prefix('/ogarec/v1')->group(function () {
 
         Route::prefix('/{id}')->group(function () {
             Route::get('/', [EntryApi::class, 'show']);
+
+            Route::prefix('upload')->group(function () {
+                Route::get('/', [EntryApi::class, 'uploaded']);
+                Route::post('/', [EntryApi::class, 'upload']);
+            });
             Route::get('/discussion', [DiscussionApi::class, 'search']);
             Route::post('/discussion', [DiscussionApi::class, 'store']);
             Route::get('/watchers', [EntryApi::class, 'wathcers']);
             Route::put('/watchers/{userId}', [EntryApi::class, 'wathcersUpd']);
-            Route::post('/upload', [EntryApi::class, 'upload']);
             Route::get('/judges', [EntryApi::class, 'judges']);
             Route::put('/judges/{entryPhasesId}', [EntryApi::class, 'updateJudge']);
         });
