@@ -15,6 +15,14 @@
             v-model="judge.status_id"
             color="primary"
           ></w-select>
+          <w-select
+            label="理由"
+            :items="reasons"
+            item-title="name"
+            item-value="id"
+            v-model="judge.reason_id"
+            color="primary"
+          ></w-select>
         </div>
         <v-btn
           variant="tonal"
@@ -30,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { Judge } from "../../types/entry";
+import { Judge, Status, Reason } from "../../types/entry";
 import { ref } from "vue";
 
 const props = defineProps({
@@ -41,15 +49,21 @@ const props = defineProps({
 });
 
 const judges = ref<Judge[]>();
-const statuses = ref([]);
+const statuses = ref<Status[]>();
+const reasons = ref<Reason[]>();
 
 search();
 
 async function search() {
-  const res = await axios.get("/api/ogarec/v1/entries/" + props.entryId + "/judges");
-  judges.value = res.data;
-  const res2 = await axios.get("/api/ogarec/v1/masters", { params: { table: "m_statuses" } });
-  statuses.value = res2.data;
+  const [resJudges, resStatuses, resReasons] = await Promise.all([
+    axios.get("/api/ogarec/v1/entries/" + props.entryId + "/judges"),
+    axios.get("/api/ogarec/v1/masters", { params: { table: "m_statuses" } }),
+    axios.get("/api/ogarec/v1/masters", { params: { table: "m_reasons" } }),
+  ]);
+
+  judges.value = resJudges.data;
+  statuses.value = resStatuses.data;
+  reasons.value = resReasons.data;
 }
 
 async function onSave(judge: Judge) {

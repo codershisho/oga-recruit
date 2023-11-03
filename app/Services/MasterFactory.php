@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\MPhase;
 use App\Models\MPosition;
+use App\Models\MReason;
 use App\Models\MSource;
 use App\Models\MStatus;
 use Illuminate\Support\Arr;
@@ -15,7 +16,8 @@ class MasterFactory
         "m_phases" => MPhase::class,
         "m_positions" => MPosition::class,
         "m_sources" => MSource::class,
-        "m_statuses" => MStatus::class
+        "m_statuses" => MStatus::class,
+        "m_reasons" => MReason::class,
     ];
 
     public static function createModel(array $request): Model

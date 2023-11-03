@@ -12,7 +12,7 @@
       v-if="newFlag"
       class="w-50 mr-3"
       :upd-mode="false"
-      @onClose="newFlag = false"
+      @onClose="onCreated"
     ></EntryBasicInfo>
     <w-sheet :class="newFlag ? `w-50` : `w-100`">
       <v-data-table
@@ -45,10 +45,14 @@ const headers = ref([
 const items = ref([]);
 const newFlag = ref(false);
 
-onMounted(async () => {
+onMounted(() => {
+  search();
+});
+
+async function search() {
   const res = await axios.get("/api/ogarec/v1/entries");
   items.value = res.data;
-});
+}
 
 function onClickRow(event: any, rowVal: any) {
   const entryId = rowVal.item.id;
@@ -57,5 +61,13 @@ function onClickRow(event: any, rowVal: any) {
 
 function onNew() {
   newFlag.value = true;
+}
+
+/**
+ * 新規作成後はモードを解除し、一覧の再検索
+ */
+function onCreated() {
+  newFlag.value = false;
+  search();
 }
 </script>

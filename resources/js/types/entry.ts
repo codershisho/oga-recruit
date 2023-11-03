@@ -34,6 +34,25 @@ export type Judge = {
   phase_id: Number;
   phase_name: String;
   status_id: Number;
+  reason_id: Number;
   next_action_day: String;
   message: String;
+};
+
+export type Status = {
+  id: Number;
+  name: String;
+  sort_order?: Number;
+  created_at?: String;
+  updated_at?: String;
+  deleted_at?: String;
+};
+
+export type Reason = {
+  id: Number;
+  name: String;
+  sort_order?: Number;
+  created_at?: String;
+  updated_at?: String;
+  deleted_at?: String;
 };

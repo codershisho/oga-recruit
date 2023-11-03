@@ -126,6 +126,7 @@ async function onSave() {
     return;
   }
   await axios.post("/api/ogarec/v1/entries", entry.value);
+  onClose();
 }
 
 function onClose() {
