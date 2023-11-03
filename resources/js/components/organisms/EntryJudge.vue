@@ -38,6 +38,7 @@
 </template>
 
 <script setup lang="ts">
+import axios from "axios";
 import { Judge, Status, Reason } from "../../types/entry";
 import { ref } from "vue";
 

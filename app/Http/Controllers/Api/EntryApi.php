@@ -16,9 +16,16 @@ use Illuminate\Support\Facades\DB;
 
 class EntryApi extends Controller
 {
-    public function index(IndexService $service)
+    /**
+     * 一覧検索
+     *
+     * @param Request $request フェーズIDがあれば絞り込む
+     * @param IndexService $service
+     * @return void
+     */
+    public function index(Request $request, IndexService $service)
     {
-        $data = $service->execIndex();
+        $data = $service->execIndex($request->all());
         return response()->json($data);
     }
 
