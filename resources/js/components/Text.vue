@@ -11,7 +11,7 @@
         variant="solo-filled"
         flat
         density="compact"
-        hide-details
+        hide-details="auto"
         single-line
       >
         <template v-if="preicon" v-slot:prepend-inner>

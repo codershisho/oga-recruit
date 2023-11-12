@@ -10,7 +10,7 @@
         variant="solo-filled"
         flat
         density="compact"
-        hide-details
+        hide-details="auto"
         clearable
       />
     </div>
